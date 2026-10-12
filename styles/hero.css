@@ -1,0 +1,189 @@
+section.hero {
+    max-width: 80rem;
+    width: 100%;
+    padding: 1.25rem 2rem;
+    margin-inline: auto;
+
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    h1 div {
+        display: inline-block;
+        overflow: hidden;
+        /*border: 2px solid lime;*/
+        height: 5rem;
+        width: min-content;
+        vertical-align: bottom;
+    }
+
+    h1 span:nth-child(1) {
+        color: var(--snitap-sky-mid);
+    }
+    h1 span:nth-child(2) {
+        color: var(--snitap-joy-light);
+    }
+    h1 span:nth-child(3) {
+        color: var(--snitap-leaf-mid);
+    }
+
+    h1 span:nth-child(4){
+
+        color: var(--snitap-sky-mid);
+    }
+
+    h1 span {
+        
+        /*border: solid red;*/
+        display: block;
+        animation: slideUp 6s infinite ease;
+    }
+
+    /* button */
+    & .buttons {
+        display: flex;
+        gap: 2rem;
+        margin-top: 3rem;
+
+        & .button {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+
+            /* background-color: gray; */
+            border-radius: 5rem;
+            transition: scale 350ms ease;
+
+
+            &.buy{
+               padding: 1.5rem 3rem; 
+               background-color: var(--snitap-sun);
+            }
+            &.play span{
+                padding: 1.5rem;
+                border-radius: 50%;
+                background-color: white;
+                display: flex;
+            }
+            &:hover {
+                scale: 1.1;
+            }
+        }
+        & .shadow {
+            box-shadow: 
+            0 2px 5px rgb(0 0 0 / .1),
+            0 9px 9px rgb(0 0 0 / .09),
+            0 20px 12px rgb(0 0 0 / .05),
+            0 36px 15px rgb(0 0 0 / .01);
+            
+        }
+    }
+
+    /* Patins */
+    &>div:nth-child(2) {
+        display: block;
+        width: 100%;
+        max-width: 30.5rem;
+
+        border: 2px solid pink;
+
+        & .content {
+            position: relative;
+
+            & img {
+                display: block;
+                width: 100%;
+
+                animation: slideInRight 1s cubic-bezier(.34, 1.56, .64, 1) both;
+            }
+
+            /* todas as imagens, menos a elipse, saem do fluxo do bloco */
+            & img:not([src*="ellipse"]) {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            /* elipse entra primeiro */
+            & img[src*="ellipse"] {
+                animation-delay: 0.2s;
+            }
+
+            /* patins entra logo depois da elipse */
+            & img[src*="patins"] {
+                animation-delay: 0.5s;
+            }
+
+            /* estrelas entram logo em seguida, uma depois da outra */
+            & img[src*="stars-1"] {
+                width: auto;
+                left: auto;
+                right: 5%;
+                top: 5%;
+                animation-delay: 0.8s;
+            }
+
+            & img[src*="stars-2"] {
+                width: auto;
+                top: auto;
+                bottom: 10%;
+                animation-delay: 1s;
+            }
+        }
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        translate: 100vw;
+        opacity: 0;
+    }
+    to {
+        translate: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+
+    /* saudavel parada */
+    0%, 22% {
+        transform: translateY(0);
+    }
+    /* radical entrando (passa do ponto para cima) */
+    23%, 25% {
+        transform: translateY(calc(-100% - 15px));
+    }
+    /* radical voltando (passa do ponto para baixo) */
+    29% {
+        transform: translateY(calc(-100% + 8px));
+    }
+    /* radical parada */
+    33%, 55% {
+        transform: translateY(-100%);
+    }
+    /* divertida entrando (passa do ponto para cima) */
+    56%, 58% {
+        transform: translateY(calc(-200% - 15px));
+    }
+    /* divertida voltando (passa do ponto para baixo) */
+    62% {
+        transform: translateY(calc(-200% + 8px));
+    }
+    /* divertida parada */
+    66%, 88% {
+        transform: translateY(-200%);
+    }
+    /* saudavel (copia) entrando (passa do ponto para cima) */
+    89%, 91% {
+        transform: translateY(calc(-300% - 15px));
+    }
+    /* saudavel (copia) voltando (passa do ponto para baixo) */
+    95% {
+        transform: translateY(calc(-300% + 8px));
+    }
+    /* saudavel (copia) parada = igual ao 0%, o loop recomeca sem pulo */
+    100% {
+        transform: translateY(-300%);
+    }
+}
