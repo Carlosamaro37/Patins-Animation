@@ -72,3 +72,18 @@ footer {
         }
     }
 }
+
+
+/* mobile: tudo empilhado e centralizado */
+@media (max-width: 48rem) {
+    footer {
+        flex-direction: column;
+        padding: 2.5rem 1rem;
+        text-align: center;
+
+        & nav {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+}

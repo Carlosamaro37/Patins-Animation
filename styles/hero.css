@@ -12,7 +12,7 @@ section.hero {
         display: inline-block;
         overflow: hidden;
         /*border: 2px solid lime;*/
-        height: 5rem;
+        height: 1.25em; /* = line-height do h1: acompanha o tamanho da fonte */
         width: min-content;
         vertical-align: bottom;
     }
@@ -185,5 +185,44 @@ section.hero {
     /* saudavel (copia) parada = igual ao 0%, o loop recomeca sem pulo */
     100% {
         transform: translateY(-300%);
+    }
+}
+
+
+/* tablet e mobile: texto em cima, patins embaixo */
+@media (max-width: 64rem) {
+    section.hero {
+        flex-direction: column;
+        gap: 2.5rem;
+        text-align: center;
+
+        & .buttons {
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        &>div:nth-child(2) {
+            max-width: 24rem;
+        }
+    }
+}
+
+/* mobile */
+@media (max-width: 48rem) {
+    section.hero {
+        padding: 1.25rem 1rem;
+
+        & .buttons {
+            gap: 1.5rem;
+            margin-top: 2rem;
+
+            & .button.buy {
+                padding: 1rem 2rem;
+            }
+
+            & .button.play span {
+                padding: 1rem;
+            }
+        }
     }
 }

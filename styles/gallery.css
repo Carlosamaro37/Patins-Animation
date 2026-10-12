@@ -114,3 +114,35 @@ section.gallery {
         transform: translateY(100%);
     }
 }
+
+/* mobile: uma foto embaixo da outra */
+@media (max-width: 48rem) {
+    section.gallery {
+        padding: 2.5rem 1rem;
+
+        & .content {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "A"
+                "B"
+                "C"
+                "D";
+            gap: 1.5rem;
+        }
+
+        & figure {
+            border-radius: 1.5rem;
+
+            & > img {
+                height: 18rem;
+            }
+        }
+    }
+}
+
+/* celular e tablet nao tem hover: a legenda fica sempre visivel */
+@media (hover: none) {
+    section.gallery figcaption {
+        transform: translateY(0);
+    }
+}
