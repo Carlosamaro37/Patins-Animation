@@ -1,0 +1,37 @@
+.banner{
+    width: 100%;
+    padding-block: 2.5rem;
+    overflow: hidden;
+}
+
+.scroller {
+    width: 100%;
+    overflow: hidden;
+    padding-block: 1rem;
+
+}
+
+.rolling {
+    display: flex;
+    gap: 1.5rem;
+    animation: rolling 2s linear infinite;
+
+    & img {
+        flex-shrink: 0; /* nao deixa o flex espremer as imagens */
+    }
+}
+
+.bg-gradient-animate {
+    background: linear-gradient(
+        45deg,
+        var(--snitap-sky-light),
+        var(--snitap-joy-light)
+    );
+}
+
+@keyframes rolling {
+    /* anda exatamente 1 imagem (106px) + o gap: o loop recomeca sem pulo */
+    to {
+        transform: translateX(calc(-106px - 1.5rem));
+    }
+}
